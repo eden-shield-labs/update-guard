@@ -35,8 +35,8 @@ dependencies {
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
-                from components.release
+            maven(MavenPublication) {
+                from components.findByName("release")
                 groupId = 'com.github.eden-shield-labs'
                 artifactId = 'update-guard'
             }
