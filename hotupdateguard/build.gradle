@@ -39,7 +39,6 @@ afterEvaluate {
                 from components.release
                 groupId = 'com.github.eden-shield-labs'
                 artifactId = 'update-guard'
-                version = '1.0.1'
             }
         }
     }
