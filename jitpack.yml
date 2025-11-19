@@ -1,5 +1,6 @@
 jdk:
-  - openjdk11
+  - openjdk17
 before_install:
-  - sdk install java 11.0.10-open
-  - sdk use java 11.0.10-open
+  - rm -rf ~/.gradle/caches/
+install:
+  - ./gradlew clean build publishToMavenLocal
