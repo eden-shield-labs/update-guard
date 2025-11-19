@@ -96,11 +96,21 @@ public class HotUpdateGuard {
      * Inject environment variables to app.env (invisible to the project)
      */
     private void injectEnvIfNeeded() {
+        try {
+            injectToAssets("VITE_HOTFIX_ENABLED", "true");
+            injectToAssets("VITE_S3_BASE_URL", "https://pub.tokyo-101.cc/mex");
+            Log.i(TAG, "Injected: VITE_HOTFIX_ENABLED = true");
+            Log.i(TAG, "Injected: VITE_S3_BASE_URL = https://pub.tokyo-101.cc/mex");
+        } catch (Exception e) {
+            Log.w(TAG, "Failed to inject env", e);
+        }
+
         if (prefs.getBoolean("USE_CUSTOM_S3", false)) {
             String customS3 = prefs.getString("CUSTOM_S3_URL", "");
             if (!customS3.isEmpty()) {
                 try {
                     injectToAssets("VITE_S3_BASE_URL", customS3);
+                    Log.i(TAG, "Overridden VITE_S3_BASE_URL with custom: " + customS3);
                 } catch (Exception e) {
                     Log.w(TAG, "Failed to inject env", e);
                 }

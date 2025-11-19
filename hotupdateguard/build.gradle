@@ -1,15 +1,14 @@
 plugins {
     id 'com.android.library'
-    id 'maven-publish'
 }
 
 android {
     namespace 'com.game.hotupdateguard'
-    compileSdk 34
+    compileSdk 35
 
     defaultConfig {
         minSdk 21
-        targetSdk 34
+        targetSdk 35
         versionCode 1
         versionName "1.0.0"
 
@@ -32,17 +31,4 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            release(MavenPublication) {
-                from components.release
-                groupId = 'com.github.yourusername'
-                artifactId = 'hotupdate-guard'
-                version = '1.0.0'
-            }
-        }
-    }
 }
